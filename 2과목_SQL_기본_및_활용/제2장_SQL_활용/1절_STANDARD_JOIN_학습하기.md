@@ -53,7 +53,7 @@
 
 - NATURAL JOIN에서는 모든 일치되는 칼럼들에 대해 JOIN이 이루어지지만, FROM 절의 USING 조건절을 이용하면 같은 이름을 가진 칼럼들 중에서 원하는 칼럼에 대해서만 선택적으로 EQUI JOIN을 할 수가 있다
 - ![스크린샷 2023-11-07 오후 5.39.14](/Users/asthu/Library/Application Support/typora-user-images/스크린샷 2023-11-07 오후 5.39.14.png)
-- USING 조건절을 이용한 EQUI JOIN에서도 NATURAL JOIN과 마찬가지로 JOIN에 사용된 칼럼들은 같은 데ㅣ터 유형이어야 하며, ALIAS나 테이블 명과 같은 접두사를 붙일 수 없다.
+- USING 조건절을 이용한 EQUI JOIN에서도 NATURAL JOIN과 마찬가지로 JOIN에 사용된 칼럼들은 같은 데이터 유형이어야 하며, ALIAS나 테이블 명과 같은 접두사를 붙일 수 없다.
 
 **ON 조건절**
 
@@ -70,7 +70,7 @@
 **CROSS JOIN**
 
 - CROSS JOIN은 E.F.CODD 박사가 언급한 일반 집합 연산자의 PRODUCT의 개념으로 테이블 간 JOIN 조건이 없는 경우 생길 수 있는 모든 데이터의 조합을 말한다
-- CARTESIAN PRODUCT 또는 CROSS PRODUCT와 같은 표현으로, 결과는 양쪽 집합의 M*N rjsdml epdlxj whgkqdl qkftodgksek
+- CARTESIAN PRODUCT 또는 CROSS PRODUCT와 같은 표현으로, 결과는 양쪽 집합의 M*N 건의 데이터 조합이 발생한다
 - 정상적인 데이터 모델이라면 CROSS PRODUCT 가 필요한 경우는 많지 않지만, 간혹 튜닝이나 리포트를 작성하기 위해 고의적으로 사용하는 경우가 있을 수 있다
 - 데이터웨어하우스의 개별 DIMENSION(차원)을 FACT(사실) 칼럼과 JOIN하기 전에 모든 DIMENSION의 CROSS PRODUCT를 먼저 구할 때 유용하게 사용할 수 있다
 - ![스크린샷 2023-11-07 오후 5.46.08](/Users/asthu/Library/Application Support/typora-user-images/스크린샷 2023-11-07 오후 5.46.08.png)
@@ -110,8 +110,8 @@
 - 세번째, RIGHT OUTER JOIN의 결과는 다음과 같다
   - TAB2를 기준으로 키 값 조합이 NULL-A, B-B, C-C 인 3건이 출력된다
 - 네번째, FULL OUTER JOIN의 결과는 다음과 같다
-  - 양쪽 테이블을 기준으로 키 값 조합이 NULL-A, B-B, C-C, D-NU::, E-NULL 인 5건이 출력된다
+  - 양쪽 테이블을 기준으로 키 값 조합이 NULL-A, B-B, C-C, D-NULL, E-NULL 인 5건이 출력된다
 - 다섯번째, CROSS JOIN(CARTESIAN PRODUCT)의 결과는 다음과 같다
   - JOIN이 가능한 모든 경우의 수를 표시하지만, 단, OUTER JOIN은 제외한다
-  - 양쪽 테이블 TAB1과 TAB2의 데이터를 곱한 개수인 4*3 =. 2건이 추출됨
+  - 양쪽 테이블 TAB1과 TAB2의 데이터를 곱한 개수인 4*3 =12건이 추출됨
   - 키 값 조합이 B-A, B-B, B-C, C-A, C-B, C-C, D-A, D-B, D-C, E-A, E-B, E-C 인 12건이 출력된다.
